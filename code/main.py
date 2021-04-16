@@ -294,10 +294,12 @@ def test(args):
 #(with precomputed alpha weights)
 #if alphas inputted to this function are none, then it assumes we are doing majority voting
 def ensemble_result(args,G_list,F_list, im_data,alphas):
-    predictions = torch.tensor(np.zeros((len(G_list),args.batch_size))).cuda()
+    predictions = torch.tensor(np.zeros((len(G_list),im_data.shape[0]))).cuda()
     count = 0
     #based on whether or not alphas is None or an array, pick how we use the
     #classifier outputs
+    #print("im_data shape: ", im_data.shape)
+    #print("predictions shape: ", predictions.shape)
     pred = []
     if (alphas is None):
       for G,F in zip(G_list,F_list):
@@ -309,7 +311,7 @@ def ensemble_result(args,G_list,F_list, im_data,alphas):
       pred = torch.mode(predictions,0) 
       pred = pred.values
     else:
-      print("Alphas: " , alphas, " adaboost eval")
+      #print("Alphas: " , alphas, " adaboost eval")
       output_overall = []
       for G,F in zip(G_list,F_list):
         feat = G(im_data)
@@ -329,7 +331,6 @@ def eval_ensemble(args,loader, G_list, F_list, class_list,alphas=None):
       G.eval()
       F.eval()
     
-    #test_loss = 0
     correct = 0
     size = 0
     num_class = len(class_list)
@@ -342,7 +343,6 @@ def eval_ensemble(args,loader, G_list, F_list, class_list,alphas=None):
             if len(class_list) == 3:
                 gt_labels[gt_labels>1]=2      
             #now based on the ensemble method used, we utilize this data
-
             pred = ensemble_result(args,G_list,F_list, im_data, alphas)
             for t, p in zip(gt_labels.view(-1), pred.view(-1)):
                 confusion_matrix[t.long(), p.long()] += 1
@@ -350,12 +350,14 @@ def eval_ensemble(args,loader, G_list, F_list, class_list,alphas=None):
             if len(class_list) == 3:
                 pred[pred>1]=2                 
             correct += pred.eq(gt_labels.data).cpu().sum()
-            #test_loss += criterion(output, gt_labels) / len(loader)
             
     return 100. * float(correct) / size
 
 def test_ensemble(args, alphas=None):
   # 1. get dataset
+  #problem: inception_v3 crops dataset differently than all the others
+  args.net = args.ensemble[0] #test, might introduce problem
+  print("args .net when loading: ", args.net)
   train_loader, val_loader, test_loader, class_list = return_dataset(args)
   print("Loading in ")
   # 2. generator
@@ -379,16 +381,16 @@ def test_ensemble(args, alphas=None):
     elif classifier == "inception_v3":
         G = models.inception_v3(pretrained=True) 
         inc = 1000
-    elif args.net == "googlenet":
+    elif classifier == "googlenet":
         G = models.googlenet(pretrained = True)
         inc = 1000
-    elif args.net == "densenet":
+    elif classifier == "densenet":
         G = models.densenet161(pretrained = True)
         inc = 1000
-    elif args.net == "resnext":
+    elif classifier == "resnext":
         G = models.resnext50_32x4d(pretrained = True)
         inc = 1000
-    elif args.net == "squeezenet":
+    elif classifier == "squeezenet":
         G = models.squeezenet1_0(pretrained = True)
         inc = 1000
     else:
@@ -409,6 +411,7 @@ def test_ensemble(args, alphas=None):
     G_list.append(G)
     F_list.append(F)
   # 5. testing
+  print("evaluating accuracy")
   acc_test = eval_ensemble(args,test_loader, G_list, F_list, class_list,alphas)
   print('Testing accuracy: {:.3f}\n'.format(acc_test))      
   return acc_test                     
@@ -454,7 +457,7 @@ if __name__ == "__main__":
           # 1. get size of dataset for the weights
           train_loader, val_loader, test_loader, class_list = return_dataset(args)
           len_train = len(train_loader)
-          print("size of train: ", len_train)
+          #print("size of train: ", len_train)
           #create a tensor of ones for initial weights
           weights = torch.ones(len_train,args.batch_size).cuda()
           #since were doing batch size, each call to the loss function is with
