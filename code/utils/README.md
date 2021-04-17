@@ -30,5 +30,11 @@ Reference | Model | Accuracy
 For this, we used google colab and decided to still use transfer learning on this projects dataset, which can be found at 
 (https://www.rsna.org/education/ai-resources-and-training/ai-image-challenge/RSNA-Pneumonia-Detection-Challenge-2018)
 
+**Proposed approach**
+
+**How to run our codes**
+
+**Evaluation Results**
+
 
 
