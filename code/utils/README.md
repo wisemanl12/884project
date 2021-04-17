@@ -19,3 +19,25 @@ Which was published in 2020, and
 [Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning](https://pubmed.ncbi.nlm.nih.gov/29474911/)
 which was published in feb 2018
 In these papers, they got classification accuracy of 
+
+ Ref
+Journal
+Year
+Model
+Accuracy
+[1] 
+Applied Sciences
+2020
+Ensemble of multi models*
+96.4%
+[1]
+Applied Sciences
+2020
+Resnet18
+94.23%
+[4]
+Cell
+2018
+Inception V3
+92.8%
+
