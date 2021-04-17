@@ -24,7 +24,7 @@ For this, we used google colab and decided to still use transfer learning on thi
 (https://www.rsna.org/education/ai-resources-and-training/ai-image-challenge/RSNA-Pneumonia-Detection-Challenge-2018)
 
 **Proposed approach**
-Source (1) got their highest accuracy using an ensemble of the 
+Source (1) got their highest accuracy using a majority voting ensemble of the pretrained AlexNet, Densenet121, Inception_V3, ResNext, GoogleNet
 
 **How to run our codes**
 
