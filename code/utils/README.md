@@ -22,8 +22,10 @@ In these papers, they got classification accuracy of
 
 Reference | Model | Accuracy
 ------------ | ------------ | -------------
-1 | Content from cell 1 | Content from cell 2
-1 | Content in the first column | Content in the second column
+1 | Ensemble of multiple models | 96.4%
+1 | Resnet18 | 94.3%
+2 | Inception V3 | 92.8%
+
 
 
  Ref
