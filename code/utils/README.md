@@ -15,5 +15,7 @@
 The idea behind our project is to try and outperform the classification accuracy on the   achieved in the following two papers: 
 
 [Multi-Channel Transfer Learning of Chest X-ray Images for Screening of COVID-19](https://www.mdpi.com/2079-9292/9/9/1388/htm)
-
-[Transfer learning with chest X-rays for ER patient classification](https://www.nature.com/articles/s41598-020-78060-4)
+Which was published in 2020, and
+[Identifying Medical Diagnoses and Treatable Diseases by Image-Based Deep Learning](https://pubmed.ncbi.nlm.nih.gov/29474911/)
+which was published in feb 2018
+In these papers, they got classification accuracy of 
