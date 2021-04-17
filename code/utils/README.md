@@ -27,7 +27,19 @@ For this, we used google colab and decided to still use transfer learning on thi
 Source (1) got their highest accuracy using a majority voting ensemble of the pretrained AlexNet, Densenet121, Inception_V3, ResNext, and GoogleNet, with an accuracy on the test set of 96.4%
 
 **How to run our codes**
+These codes have 3 ways they can be run, and a number of command line parameters to run the main.py script. These are run in google colab, so you would need to zip your file directory from this git repo into a .zip or .tar file, put it in your google drive, and then 
 
+Single classifier example: 
+
+!python main.py --datapath /content/chest_xray --loss SmoothCrossEntropy --num_labels 2 --batch_size 64 --steps 500 --save_interval 100 --net=resnet50 --runs=1
+
+Ensemble majority voting example: 
+!python main.py --datapath /content/chest_xray --loss SmoothCrossEntropy --num_labels 2 --runs 1 --batch_size 64 --steps 1000 --save_interval 200 --ensemble googlenet resnet101 vgg alexnet inception_v3 --runs 1
+
+Ensemble adaboost example: 
+!python main.py --datapath /content/chest_xray --loss SmoothCrossEntropy --num_labels 2 --runs 1 --batch_size 64 --steps 1000 --save_interval 200 --ensemble adaBoost googlenet resnet101 vgg alexnet inception_v3 --runs 1
+
+Command line parameters: 
 **Evaluation Results**
 
 
