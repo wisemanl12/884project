@@ -28,24 +28,3 @@ Reference | Model | Accuracy
 
 
 
- Ref
-Journal
-Year
-Model
-Accuracy
-[1] 
-Applied Sciences
-2020
-Ensemble of multi models*
-96.4%
-[1]
-Applied Sciences
-2020
-Resnet18
-94.23%
-[4]
-Cell
-2018
-Inception V3
-92.8%
-
