@@ -1,8 +1,4 @@
 
-
-
-
-
 **Introduction**
 
 The idea behind our project is to try and outperform the classification accuracy on the   achieved in the following two papers: 
@@ -29,7 +25,7 @@ Source (1) got their highest accuracy using a majority voting ensemble of the pr
 **How to run our codes**
 These codes have 3 ways they can be run, and a number of command line parameters to run the main.py script. These are run in google colab, so you would need to zip your file directory from this git repo into a .zip or .tar file, put it in your google drive, and then 
 
-[TODO: INSERT ALL THE COLAB STEPS (SCREENSHOT)]
+![Tutorial 1](/code/colab_1.PNG)
 
 Single classifier example: 
 
@@ -43,6 +39,3 @@ Ensemble adaboost example:
 
 Command line parameters: 
 **Evaluation Results**
-
-
-
