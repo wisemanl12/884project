@@ -22,6 +22,8 @@ For this, we used google colab and decided to still use transfer learning on thi
 **Proposed approach**
 Source (1) got their highest accuracy using a majority voting ensemble of the pretrained AlexNet, Densenet121, Inception_V3, ResNext, and GoogleNet, with an accuracy on the test set of 96.4%
 
+Our proposed approach is to try a multitude of single classifiers with different loss functions for this problem, see the best performance we can get there, and then utilize the best performing loss function from this test to try and get even better ensemble performance
+
 **How to run our codes**
 These codes have 3 ways they can be run, and a number of command line parameters to run the main.py script. These are run in google colab, so you would need to zip your file directory from this git repo into a .zip or .tar file, put it in your google drive, and then 
 
