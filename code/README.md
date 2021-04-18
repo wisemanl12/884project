@@ -84,3 +84,7 @@ Command line parameters:
     
 
 **Evaluation Results**
+
+Single model classifiers: 
+
+![Table 1](/code/table.PNG)
