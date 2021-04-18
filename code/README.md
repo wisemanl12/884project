@@ -88,3 +88,14 @@ Command line parameters:
 Single model classifiers: 
 
 ![Table 1](/code/table.PNG)
+
+From this we found smooth crossentropy to be the best loss function overall, and used this for some ensemble method tests:
+
+Majority voting (2 class problem), smooth crossentropy, vgg resnet50 alexnet resnext inception_v3, 97.02% test accuracy
+
+Adaboost (2 class): smooth crossentropy, vgg resnet50 alexnet resnext inception_v3, 97.3333333% test accuracy
+
+Adaboost (2 class): smooth crossentropy ,vgg resnet50 alexnet resnext inception_v3 googlenet resnet101, 97.646% test accuracy
+
+
+
